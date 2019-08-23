@@ -25,6 +25,7 @@ https://github.com/givanz/VvvebJs
     this.tmpl = function tmpl(str, data) {
         // Figure out if we're getting a template, or if we need to
         // load the template - and be sure to cache the result.
+        console.log(str);
         var fn = /^[-a-zA-Z0-9]+$/.test(str) ?
             cache[str] = cache[str] ||
             tmpl(document.getElementById(str).innerHTML) :
@@ -193,7 +194,6 @@ Vvveb.Components = {
         this.add(type, newData);
     },
 
-
     matchNode: function (node) {
         var component = {};
 
@@ -262,7 +262,6 @@ Vvveb.Components = {
         jQuery(this.componentPropertiesElement + " .tab-pane").each(function () {
             var sectionName = this.dataset.section;
             componentsPanelSections[sectionName] = $(this);
-
         });
 
         var section = componentsPanelSections[defaultSection].find('.section[data-section="default"]');
@@ -403,7 +402,6 @@ Vvveb.Components = {
     }
 };
 
-
 Vvveb.Blocks = {
 
     _blocks: {},
@@ -417,8 +415,6 @@ Vvveb.Blocks = {
         this._blocks[type] = data;
     },
 };
-
-
 
 Vvveb.WysiwygEditor = {
 
@@ -629,13 +625,13 @@ Vvveb.Builder = {
             var highlightBox = jQuery("#highlight-box").hide();
 
 
-            $(window.FrameWindow).on("beforeunload", function (event) {
-                if (Vvveb.Undo.undoIndex <= 0) {
-                    var dialogText = "You have unsaved changes";
-                    event.returnValue = dialogText;
-                    return dialogText;
-                }
-            });
+            //$(window.FrameWindow).on("beforeunload", function (event) {
+            //    if (Vvveb.Undo.undoIndex <= 0) {
+            //        var dialogText = "You have unsaved changes";
+            //        event.returnValue = dialogText;
+            //        return dialogText;
+            //    }
+            //});
 
             jQuery(window.FrameWindow).on("scroll resize", function (event) {
 
@@ -723,7 +719,6 @@ Vvveb.Builder = {
             component = Vvveb.defaultComponent;
 
         Vvveb.Components.render(component);
-
     },
 
     selectNode: function (node) {
@@ -772,7 +767,6 @@ Vvveb.Builder = {
         var self = Vvveb.Builder;
 
         self.frameHtml.on("mousemove touchmove", function (event) {
-
             if (event.target && isElement(event.target) && event.originalEvent) {
                 self.highlightEl = target = jQuery(event.target);
                 var offset = target.offset();
@@ -819,28 +813,27 @@ Vvveb.Builder = {
 
                     if (!self.designerMode && self.iconDrag) self.iconDrag.css({ 'left': x + 275/*left panel width*/, 'top': y - 30 });
                 }// else //uncomment else to disable parent highlighting when dragging
-                {
 
-                    jQuery("#highlight-box").css(
-                        {
-                            "top": offset.top - self.frameDoc.scrollTop(),
-                            "left": offset.left - self.frameDoc.scrollLeft(),
-                            "width": width,
-                            "height": height,
-                            "display": event.target.hasAttribute('contenteditable') ? "none" : "block",
-                            "border": self.isDragging ? "1px dashed aqua" : "",//when dragging highlight parent with green
-                        });
+                //var target = event.target.nodeName;
+                var title = 'Add element for [' + event.target.nodeName + ']';
+                $('#add-section-btn').attr('title', title);
+                jQuery("#highlight-box").css({
+                    "top": offset.top - self.frameDoc.scrollTop(),
+                    "left": offset.left - self.frameDoc.scrollLeft(),
+                    "width": width,
+                    "height": height,
+                    "display": event.target.hasAttribute('contenteditable') ? "none" : "block",
+                    "border": self.isDragging ? "1px dashed aqua" : "",//when dragging highlight parent with green
+                });
 
-                    if (height < 50) {
-                        jQuery("#section-actions").addClass("outside");
-                    } else {
-                        jQuery("#section-actions").removeClass("outside");
-                    }
-                    jQuery("#highlight-name").html(self._getElementType(event.target));
-                    if (self.isDragging) jQuery("#highlight-name").hide(); else jQuery("#highlight-name").show();//hide tag name when dragging
+                if (height < 50) {
+                    jQuery("#section-actions").addClass("outside");
+                } else {
+                    jQuery("#section-actions").removeClass("outside");
                 }
+                jQuery("#highlight-name").html(self._getElementType(event.target));
+                if (self.isDragging) jQuery("#highlight-name").hide(); else jQuery("#highlight-name").show();//hide tag name when dragging
             }
-
         });
 
         self.frameHtml.on("mouseup touchend", function (event) {
@@ -904,7 +897,6 @@ Vvveb.Builder = {
             }
         });
 
-
         self.frameHtml.on("click", function (event) {
 
             if (Vvveb.Builder.isPreview == false) {
@@ -922,7 +914,6 @@ Vvveb.Builder = {
             }
 
         });
-
     },
 
     _initBox: function () {
@@ -942,6 +933,7 @@ Vvveb.Builder = {
                 oldNextSibling: node.nextSibling
             };
 
+            Vvveb.FileManager.loadComponents();
             //self.selectNode(false);
             event.preventDefault();
             return false;
@@ -973,7 +965,7 @@ Vvveb.Builder = {
                 oldNextSibling: oldNextSibling,
                 newNextSibling: newNextSibling
             });
-
+            Vvveb.FileManager.loadComponents();
             event.preventDefault();
             return false;
         });
@@ -1004,7 +996,7 @@ Vvveb.Builder = {
                 oldNextSibling: oldNextSibling,
                 newNextSibling: newNextSibling
             });
-
+            Vvveb.FileManager.loadComponents();
             event.preventDefault();
             return false;
         });
@@ -1024,13 +1016,12 @@ Vvveb.Builder = {
                 addedNodes: [node],
                 nextSibling: node.nextSibling
             });
-
+            Vvveb.FileManager.loadComponents();
             event.preventDefault();
             return false;
         });
 
         $("#parent-btn").on("click", function (event) {
-
             node = self.selectedEl.parent().get(0);
 
             self.selectNode(node);
@@ -1053,7 +1044,7 @@ Vvveb.Builder = {
             });
 
             self.selectedEl.remove();
-
+            Vvveb.FileManager.loadComponents();
             event.preventDefault();
             return false;
         });
@@ -1077,12 +1068,11 @@ Vvveb.Builder = {
             if (((top + addSectionBox.outerHeight()) + self.frameDoc.scrollTop()) > outerHeight) top = top - addSectionBox.outerHeight();
 
 
-            addSectionBox.css(
-                {
-                    "top": top,
-                    "left": left,
-                    "display": "block",
-                });
+            addSectionBox.css({
+                "top": top,
+                "left": left,
+                "display": "block",
+            });
 
             event.preventDefault();
             return false;
@@ -1109,6 +1099,8 @@ Vvveb.Builder = {
                 addedNodes: [node],
                 nextSibling: node.nextSibling
             });
+
+            Vvveb.FileManager.loadComponents();
         }
 
         $(".components-list li ol li", addSectionBox).on("click", function (event) {
@@ -1221,6 +1213,7 @@ Vvveb.Builder = {
 
     getHtml: function (keepHelperAttributes = true) {
         var doc = window.FrameDocument;
+        if (!doc) return '';
         var hasDoctpe = (doc.doctype !== null);
         var html = "";
 
@@ -1234,6 +1227,7 @@ Vvveb.Builder = {
             + (doc.doctype.systemId ? ' "' + doc.doctype.systemId + '"' : '')
             + ">\n";
 
+        html += '<html>\n';
         html += doc.documentElement.innerHTML + "\n</html>";
 
         html = this.removeHelpers(html, keepHelperAttributes);
@@ -1350,6 +1344,8 @@ Vvveb.Gui = {
                 $(window.FrameDocument, window.FrameWindow).bind('keydown', this.dataset.vvvebShortcut, Vvveb.Gui[this.dataset.vvvebAction]);
             }
         });
+
+        this.autoSave();
     },
 
     undo: function () {
@@ -1378,12 +1374,20 @@ Vvveb.Gui = {
 
     //post html content through ajax to save to filesystem/db
     saveAjax: function () {
-
         var url = Vvveb.FileManager.getCurrentUrl();
 
         return Vvveb.Builder.saveAjax(url, null, function (data) {
-            $('#message-modal').modal().find(".modal-body").html("File saved at: " + data.url);
+            $('#message-modal').modal().find(".modal-body").html("保存成功 <br/>File saved at: " + data.url);
+            //$('body').popover({ content: '保存成功', delay: { "show": 500, "hide": 100 }});
+            delay(function () {
+                $('#message-modal').modal('hide');
+            }, 2000);
         });
+    },
+
+    autoSave: function () {
+        var pageName = Vvveb.FileManager.getCurrentPageName();
+        if (pageName) setInterval(this.saveAjax, 60000);
     },
 
     download: function () {
@@ -1501,7 +1505,7 @@ Vvveb.Gui = {
             fileName = fileName.replace(/[^A-Za-z0-9\.\/]+/g, '-');
 
             //add your server url/prefix/path if needed
-            var url = "Pages/" + pageType + "/" + fileName;
+            var url = "Pages/" + pageType + "/" + fileName + $('#fileExtSpan').text();
 
             event.preventDefault();
 
@@ -1608,7 +1612,6 @@ Vvveb.ContentManager = {
         return element.html();
     },
 }
-
 
 Vvveb.FileManager = {
     tree: false,
@@ -1746,7 +1749,11 @@ Vvveb.FileManager = {
 
     getCurrentUrl: function () {
         var pageName = this.getCurrentPageName();
-        if (pageName) return this.pages[pageName]['url'];
+        if (pageName) {
+            if (this.pages[pageName])
+                return this.pages[pageName]['url'];
+            return '';
+        }
     },
 
     getCurrentPageName: function () {
@@ -1769,7 +1776,8 @@ Vvveb.FileManager = {
 
         localStorage.setItem(this.currentPageKey, name);
         //this.currentPage = name;
-        var url = this.pages[name]['url'];
+        var url = this.getCurrentUrl();
+        if (!url) return;
 
         Vvveb.Builder.loadUrl(url + (disableCache ? (url.indexOf('?') > -1 ? '&' : '?') + Math.random() : ''),
             function () {
@@ -1803,6 +1811,14 @@ Vvveb.FileManager = {
         scroll.scrollTop(scroll.prop("scrollHeight"));
     },
 }
+
+$(function () {
+    $('select[name="pageType"]').change(function () {
+        var value = $(this).find('option:selected').val();
+        value = '.' + value.toLowerCase();
+        $('#fileExtSpan').text(value);
+    });
+});
 
 // Toggle fullscreen
 function launchFullScreen(document) {

@@ -131,7 +131,11 @@ namespace VvvebJs.Api
                 {
                     if (index == 0)
                     {
-                        res.Add(item.Substring(0, item.LastIndexOf('.')));
+                        int len = item.LastIndexOf('.');
+                        if (len > -1)
+                            res.Add(item.Substring(0, len));
+                        else
+                            res.Add(item);
                     }
                     else
                     {

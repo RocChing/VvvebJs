@@ -10,13 +10,10 @@
     <link rel="icon" href="favicon.ico">
     <base href="">
     <title>VvvebJs</title>
-
     <link href="css/editor.css" rel="stylesheet">
     <link href="css/line-awesome.css" rel="stylesheet">
 </head>
 <body>
-
-
     <div id="vvveb-builder">
         <div id="top-panel">
             <img src="img/logo.png" alt="Vvveb" class="float-left" id="logo">
@@ -212,7 +209,6 @@
             </div>
         </div>
 
-
         <div id="canvas">
             <div id="iframe-wrapper">
                 <div id="iframe-layer">
@@ -339,13 +335,10 @@
                 </div>
                 <iframe src="about:none" id="iframe1"></iframe>
             </div>
-
-
         </div>
 
         <div id="right-panel">
             <div class="component-properties">
-
                 <ul class="nav nav-tabs nav-fill" id="properties-tabs" role="tablist">
                     <li class="nav-item content-tab">
                         <a class="nav-link active" data-toggle="tab" href="#content-tab" role="tab" aria-controls="components" aria-selected="true">
@@ -373,12 +366,7 @@
 
                     <div class="tab-pane fade show" id="advanced-tab" data-section="advanced" role="tabpanel" aria-labelledby="advanced-tab">
                     </div>
-
-
                 </div>
-
-
-
             </div>
         </div>
 
@@ -404,13 +392,22 @@
             </div>
         </div>
 
-
         <!-- templates -->
 
         <script id="vvveb-input-textinput" type="text/html">
 
             <div>
                 <input name="{%=key%}" type="text" class="form-control" />
+            </div>
+
+        </script>
+
+        <script id="vvveb-input-textinput2" type="text/html">
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">{%=text%}</label>
+                <div class="col-sm-10">
+                    <input name="{%=key%}" value="{%=value%}" type="text" class="form-control" />
+                </div>
             </div>
 
         </script>
@@ -466,7 +463,6 @@
             </div>
 
         </script>
-
 
         <script id="vvveb-input-toggle" type="text/html">
 
@@ -545,7 +541,7 @@
 
                         <option value="">None</option>
                         {% for ( var i = 1; i <= 12; i++ ) { %}
-                        <option value="{%=i%}" {% if ((typeof col != ='undefined' ) && col= =i) { %} selected {% } %}>{%=i%}</option>
+                        <option value="{%=i%}" {% if ((typeof col !=='undefined' ) && col==i) { %} selected {% } %}>{%=i%}</option>
                         {% } %}
 
                     </select>
@@ -558,7 +554,7 @@
 
                         <option value="">None</option>
                         {% for ( var i = 1; i <= 12; i++ ) { %}
-                        <option value="{%=i%}" {% if ((typeof col_xs != ='undefined' ) && col_xs= =i) { %} selected {% } %}>{%=i%}</option>
+                        <option value="{%=i%}" {% if ((typeof col_xs !=='undefined' ) && col_xs==i) { %} selected {% } %}>{%=i%}</option>
                         {% } %}
 
                     </select>
@@ -571,7 +567,7 @@
 
                         <option value="">None</option>
                         {% for ( var i = 1; i <= 12; i++ ) { %}
-                        <option value="{%=i%}" {% if ((typeof col_sm != ='undefined' ) && col_sm= =i) { %} selected {% } %}>{%=i%}</option>
+                        <option value="{%=i%}" {% if ((typeof col_sm !=='undefined' ) && col_sm==i) { %} selected {% } %}>{%=i%}</option>
                         {% } %}
 
                     </select>
@@ -581,10 +577,9 @@
                 <div class="col-6">
                     <label>Medium</label>
                     <select class="form-control custom-select" name="col-md">
-
                         <option value="">None</option>
                         {% for ( var i = 1; i <= 12; i++ ) { %}
-                        <option value="{%=i%}" {% if ((typeof col_md != ='undefined' ) && col_md= =i) { %} selected {% } %}>{%=i%}</option>
+                        <option value="{%=i%}" {% if ((typeof col_md !=='undefined' ) && col_md==i) { %} selected {% } %}>{%=i%}</option>
                         {% } %}
 
                     </select>
@@ -597,7 +592,7 @@
 
                         <option value="">None</option>
                         {% for ( var i = 1; i <= 12; i++ ) { %}
-                        <option value="{%=i%}" {% if ((typeof col_lg != ='undefined' ) && col_lg= =i) { %} selected {% } %}>{%=i%}</option>
+                        <option value="{%=i%}" {% if ((typeof col_lg !=='undefined' ) && col_lg==i) { %} selected {% } %}>{%=i%}</option>
                         {% } %}
 
                     </select>
@@ -613,9 +608,7 @@
 
                 </div>
                 {% } %}
-
             </div>
-
         </script>
 
         <script id="vvveb-input-textvalue" type="text/html">
@@ -665,7 +658,7 @@
         <script id="vvveb-input-colorinput" type="text/html">
 
             <div>
-                <input name="{%=key%}" type="color" {% if (typeof value != ='undefined' && value !=false) { %} value="{%=value%}" {% } %} pattern="#[a-f0-9]{6}" class="form-control" />
+                <input name="{%=key%}" type="color" {% if (typeof value !=='undefined' && value !=false) { %} value="{%=value%}" {% } %} pattern="#[a-f0-9]{6}" class="form-control" />
             </div>
 
         </script>
@@ -674,7 +667,7 @@
 
             <div>
                 <div id="cp2" class="input-group" title="Using input value">
-                    <input name="{%=key%}" type="text" {% if (typeof value != ='undefined' && value !=false) { %} value="{%=value%}" {% } %} class="form-control" />
+                    <input name="{%=key%}" type="text" {% if (typeof value !=='undefined' && value !=false) { %} value="{%=value%}" {% } %} class="form-control" />
                     <span class="input-group-append">
                         <span class="input-group-text colorpicker-input-addon"><i></i></span>
                     </span>
@@ -686,9 +679,9 @@
         <script id="vvveb-input-numberinput" type="text/html">
             <div>
                 <input name="{%=key%}" type="number" value="{%=value%}"
-                       {% if (typeof min != ='undefined' && min !=false) { %}min="{%=min%}" {% } %}
-                       {% if (typeof max != ='undefined' && max !=false) { %}max="{%=max%}" {% } %}
-                       {% if (typeof step != ='undefined' && step !=false) { %}step="{%=step%}" {% } %}
+                       {% if (typeof min !=='undefined' && min !=false) { %}min="{%=min%}" {% } %}
+                       {% if (typeof max !=='undefined' && max !=false) { %}max="{%=max%}" {% } %}
+                       {% if (typeof step !=='undefined' && step !=false) { %}step="{%=step%}" {% } %}
                        class="form-control" />
             </div>
         </script>
@@ -703,10 +696,10 @@
 
         <script id="vvveb-input-cssunitinput" type="text/html">
             <div class="input-group" id="cssunit-{%=key%}">
-                <input name="number" type="number" {% if (typeof value != ='undefined' && value !=false) { %} value="{%=value%}" {% } %}
-                       {% if (typeof min != ='undefined' && min !=false) { %}min="{%=min%}" {% } %}
-                       {% if (typeof max != ='undefined' && max !=false) { %}max="{%=max%}" {% } %}
-                       {% if (typeof step != ='undefined' && step !=false) { %}step="{%=step%}" {% } %}
+                <input name="number" type="number" {% if (typeof value !=='undefined' && value !=false) { %} value="{%=value%}" {% } %}
+                       {% if (typeof min !=='undefined' && min !=false) { %}min="{%=min%}" {% } %}
+                       {% if (typeof max !=='undefined' && max !=false) { %}max="{%=max%}" {% } %}
+                       {% if (typeof step !=='undefined' && step !=false) { %}step="{%=step%}" {% } %}
                        class="form-control" />
                 <div class="input-group-append">
                     <select class="form-control custom-select small-arrow" name="unit">
@@ -720,7 +713,6 @@
             </div>
 
         </script>
-
 
         <script id="vvveb-filemanager-page" type="text/html">
             <li data-url="{%=url%}" data-page="{%=name%}">
@@ -738,15 +730,12 @@
         <script id="vvveb-input-sectioninput" type="text/html">
 
             <label class="header" data-header="{%=key%}" for="header_{%=key%}"><span>&ensp;{%=header%}</span> <div class="header-arrow"></div></label>
-            <input class="header_check" type="checkbox" {% if (typeof expanded != ='undefined' && expanded= =false) { %} {% } else { %}checked="true" {% } %} id="header_{%=key%}">
+            <input class="header_check" type="checkbox" {% if (typeof expanded !=='undefined' && expanded==false) { %} {% } else { %}checked="true" {% } %} id="header_{%=key%}">
             <div class="section" data-section="{%=key%}"></div>
-
         </script>
 
-
         <script id="vvveb-property" type="text/html">
-
-            <div class="form-group {% if (typeof col !== 'undefined' && col != false) { %} col-sm-{%=col%} d-inline-block {% } else { %}row{% } %}" data-key="{%=key%}" {% if (typeof group != ='undefined' && group !=null) { %}data-group="{%=group%}" {% } %}>
+            <div class="form-group {% if (typeof col !== 'undefined' && col != false) { %} col-sm-{%=col%} d-inline-block {% } else { %}row{% } %}" data-key="{%=key%}" {% if (typeof group !=='undefined' && group !=null) { %}data-group="{%=group%}" {% } %}>
 
                 {% if (typeof name !== 'undefined' && name != false) { %}<label class="{% if (typeof inline === 'undefined' ) { %}col-sm-4{% } %} control-label" for="input-model">{%=name%}</label>{% } %}
 
@@ -761,7 +750,7 @@
             <div>
                 <input name="{%=key%}" type="text" class="form-control" />
 
-                <div class="form-control autocomplete-list" style="min-height: 150px; overflow: auto;">
+                <div class="form-control autocomplete-list" style="min=height: 150px; overflow: auto;">
                     <div id="featured-product43">
                         <i class="la la-close"></i> MacBook
                         <input name="product[]" value="43" type="hidden">
@@ -782,7 +771,6 @@
             </div>
 
         </script>
-
 
         <!--// end templates -->
         <!-- export html modal-->
@@ -808,7 +796,7 @@
         </div>
 
         <!-- message modal-->
-        <div class="modal fade" id="message-modal" tabindex="-1" role="dialog">
+        <div class="modal fade" id="message-modal" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -831,9 +819,7 @@
         <!-- new page modal-->
         <div class="modal fade" id="new-page-modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
-
                 <form>
-
                     <div class="modal-content">
                         <div class="modal-header">
                             <p class="modal-title text-primary"><i class="la la-lg la-file"></i> New page</p>
@@ -851,8 +837,8 @@
                                 <div class="col-sm-9 input">
                                     <div>
                                         <select class="form-control custom-select" name="startTemplateUrl">
-                                            <option value="new-page-blank-template.html">Blank Template</option>
-                                            <option value="demo/narrow-jumbotron/index.html">Narrow jumbotron</option>
+                                            <option value="templates/new-html.html">Html Blank Template</option>
+                                            <option value="templates/new-vue.html">Vue Blank Template</option>
                                             <option value="demo/album/index.html">Album</option>
                                         </select>
                                     </div>
@@ -884,10 +870,14 @@
                             </div>-->
 
                             <div class="form-group row" data-key="href">
-                                <label class="col-sm-3 control-label">File name</label>
+                                <label class="col-sm-3 control-label">
+                                    Page Name
+                                    <abbr class="badge badge-pill badge-secondary" title="不用添加文件后缀名称">?</abbr>
+                                </label>
                                 <div class="col-sm-9 input">
-                                    <div>
-                                        <input name="fileName" type="text" class="form-control" placeholder="my-page.html" required>
+                                    <div class="input-group">
+                                        <input name="fileName" type="text" class="form-control" placeholder="Page Name" required autocomplete="off" />
+                                        <span class="input-group-text input-group-append" id="fileExtSpan">.html</span>
                                     </div>
                                 </div>
                             </div>
@@ -927,9 +917,10 @@
     <script src="libs/builder/plugin-bootstrap-colorpicker.js"></script>
     -->
     <!-- components-->
-    <script src="libs/builder/components-server.js"></script>
+    <!--<script src="libs/builder/components-server.js"></script>-->
     <script src="libs/builder/components-bootstrap4.js"></script>
-    <script src="libs/builder/components-widgets.js"></script>
+    <!--<script src="libs/builder/components-widgets.js"></script>-->
+    <script src="libs/builder/element-ui.js"></script>
 
     <!-- blocks-->
     <script src="libs/builder/blocks-bootstrap4.js"></script>
@@ -979,14 +970,14 @@
             //        { name: "ecommerce", title: "eCommerce homepage", url: "demo/essence/index.html", config: "demo/essence/vvvebjs.json" },
             //        //uncomment php code below and rename file to .php extension to load saved html files in the editor
             //        /*
-                    //<?php
-                    //   $htmlFiles = glob("*.html");
-                    //   foreach ($htmlFiles as $file) {
-                    //       if (in_array($file, array('new-page-blank-template.html', 'editor.html'))) continue;//skip template files
-                    //       $pathInfo = pathinfo($file);
-                    //?>
-                    //{name:"<?php echo ucfirst($pathInfo['filename']);?>", title:"<?php echo ucfirst($pathInfo['filename']);?>",  url: "<?php echo $pathInfo['basename'];?>"},
-                    //<?php } ?>
+            //<?php
+            //   $htmlFiles = glob("*.html");
+            //   foreach ($htmlFiles as $file) {
+            //       if (in_array($file, array('new-page-blank-template.html', 'editor.html'))) continue;//skip template files
+            //       $pathInfo = pathinfo($file);
+            //?>
+            //{name:"<?php echo ucfirst($pathInfo['filename']);?>", title:"<?php echo ucfirst($pathInfo['filename']);?>",  url: "<?php echo $pathInfo['basename'];?>"},
+            //<?php } ?>
             //        */
             //        { name: "test", title: "test", url: "http://vvveb_install.givan.ro/" },
             //    ]);

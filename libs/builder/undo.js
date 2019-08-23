@@ -26,7 +26,7 @@ subtree 				Set to true if mutations to target and target's descendants are to b
 attributeOldValue 		Set to true if attributes is set to true and target's attribute value before the mutation needs to be recorded.
 characterDataOldValue 	Set to true if characterData is set to true and target's data before the mutation needs to be recorded.
 attributeFilter 		Set to an array of attribute local names (without namespace) if not all attribute mutations need to be observed.
-*/ 
+*/
 
 /*
 MutationRecord.type				 	String 		Returns "attributes" if the mutation was an attribute mutation,
@@ -49,109 +49,101 @@ MutationRecord.oldValue 			String 		The return value depends on the MutationReco
 												For characterData, it is the data of the changed node before the change.
 												For childList, it is null.
 */
- 
+
 Vvveb.Undo = {
-	
-	undos: [],
-	mutations: [],
-	undoIndex: -1,
-	enabled:true,
+
+    undos: [],
+    mutations: [],
+    undoIndex: -1,
+    enabled: true,
 	/*		
 	init: function() {
 	},
-	*/	
-	addMutation : function(mutation) {	
+	*/
+    addMutation: function (mutation) {
 		/*
 			this.mutations.push(mutation);
 			this.undoIndex++;
 		*/
-		Vvveb.Builder.frameBody.trigger("vvveb.undo.add");
-		this.mutations.splice(++this.undoIndex, 0, mutation);
-	 },
+        Vvveb.Builder.frameBody.trigger("vvveb.undo.add");
+        this.mutations.splice(++this.undoIndex, 0, mutation);
+    },
 
-	restore : function(mutation, undo) {	
-		
-		switch (mutation.type) {
-			case 'childList':
-			
-				if (undo == true)
-				{
-					addedNodes = mutation.removedNodes;
-					removedNodes = mutation.addedNodes;
-				} else //redo
-				{
-					addedNodes = mutation.addedNodes;
-					removedNodes = mutation.removedNodes;
-				}
-				
-				if (addedNodes) for(i in addedNodes)
-				{
-					node = addedNodes[i];
-					if (mutation.nextSibling)
-					{ 
-						mutation.nextSibling.parentNode.insertBefore(node, mutation.nextSibling);
-					} else
-					{
-						mutation.target.append(node);
-					}
-				}
+    restore: function (mutation, undo) {
 
-				if (removedNodes) for(i in removedNodes)
-				{
-					node = removedNodes[i];
-					node.parentNode.removeChild(node);
-				}
-			break;					
-			case 'move':
-				if (undo == true)
-				{
-					parent = mutation.oldParent;
-					sibling = mutation.oldNextSibling;
-				} else //redo
-				{
-					parent = mutation.newParent;
-					sibling = mutation.newNextSibling;
-				}
-			  
-				if (sibling)
-				{
-					sibling.parentNode.insertBefore(mutation.target, sibling);
-				} else
-				{
-					parent.append(node);
-				}
-			break;
-			case 'characterData':
-			  mutation.target.innerHTML = undo ? mutation.oldValue : mutation.newValue;
-			  break;
-			case 'attributes':
-			  value = undo ? mutation.oldValue : mutation.newValue;
+        switch (mutation.type) {
+            case 'childList':
 
-			  if (value || value === false || value === 0)
-				mutation.target.setAttribute(mutation.attributeName, value);
-			  else
-				mutation.target.removeAttribute(mutation.attributeName);
+                if (undo == true) {
+                    addedNodes = mutation.removedNodes;
+                    removedNodes = mutation.addedNodes;
+                } else //redo
+                {
+                    addedNodes = mutation.addedNodes;
+                    removedNodes = mutation.removedNodes;
+                }
 
-			break;
-		}
-		
-		Vvveb.Builder.frameBody.trigger("vvveb.undo.restore");
-	 },
-	 
-	undo : function() {	
-		if (this.undoIndex >= 0) {
-		  this.restore(this.mutations[this.undoIndex--], true);
-		}
-	 },
+                if (addedNodes) for (i in addedNodes) {
+                    node = addedNodes[i];
+                    if (mutation.nextSibling) {
+                        mutation.nextSibling.parentNode.insertBefore(node, mutation.nextSibling);
+                    } else {
+                        mutation.target.append(node);
+                    }
+                }
 
-	redo : function() {	
-		if (this.undoIndex < this.mutations.length - 1) {
-		  this.restore(this.mutations[++this.undoIndex], false);
-		}
-	},
+                if (removedNodes) for (i in removedNodes) {
+                    node = removedNodes[i];
+                    node.parentNode.removeChild(node);
+                }
+                break;
+            case 'move':
+                if (undo == true) {
+                    parent = mutation.oldParent;
+                    sibling = mutation.oldNextSibling;
+                } else //redo
+                {
+                    parent = mutation.newParent;
+                    sibling = mutation.newNextSibling;
+                }
 
-	hasChanges : function() {	
-		return this.mutations.length;
-	},
+                if (sibling) {
+                    sibling.parentNode.insertBefore(mutation.target, sibling);
+                } else {
+                    parent.append(node);
+                }
+                break;
+            case 'characterData':
+                mutation.target.innerHTML = undo ? mutation.oldValue : mutation.newValue;
+                break;
+            case 'attributes':
+                value = undo ? mutation.oldValue : mutation.newValue;
+
+                if (value || value === false || value === 0)
+                    mutation.target.setAttribute(mutation.attributeName, value);
+                else
+                    mutation.target.removeAttribute(mutation.attributeName);
+
+                break;
+        }
+
+        Vvveb.Builder.frameBody.trigger("vvveb.undo.restore");
+    },
+
+    undo: function () {
+        if (this.undoIndex >= 0) {
+            this.restore(this.mutations[this.undoIndex--], true);
+        }
+    },
+
+    redo: function () {
+        if (this.undoIndex < this.mutations.length - 1) {
+            this.restore(this.mutations[++this.undoIndex], false);
+        }
+    },
+
+    hasChanges: function () {
+        return this.mutations.length;
+    }
 };
 
