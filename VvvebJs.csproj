@@ -11,9 +11,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Html\" />
-    <Folder Include="Pages\Vue\" />
-  </ItemGroup>
-
 </Project>

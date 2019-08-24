@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="https://unpkg.com/form-making/dist/FormMaking.css">
+</head>
+<body>
+    <div id="app">
+        <fm-generate-form :data="jsonData" :remote="remoteFuncs" :value="editData" ref="generateForm">
+
+        </fm-generate-form>
+        <el-button type="primary" @click="handleSubmit">提交</el-button>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://unpkg.com/form-making/dist/FormMaking.umd.js"></script>
+    <script>
+    new Vue({
+            el: '#app',
+            data: {
+                jsonData: {
+                    "list": [{
+                        "type": "grid", "name": "栅格布局", "icon": "icon-grid-", "columns": [{ "span": 24, "list": [{ "type": "radio", "name": "优先级", "icon": "icon-radio-active", "options": { "inline": true, "defaultValue": "", "showLabel": false, "options": [{ "value": "重要", "label": "选项1" }, { "value": "一般", "label": "选项2" }], "required": true, "width": "", "remote": false, "remoteOptions": [], "props": { "value": "value", "label": "label" }, "remoteFunc": "func_1566654985699", "customClass": "" }, "novalid": {}, "key": "1566655218711", "model": "radio1566655218711", "rules": [{ "required": true, "message": "优先级必须填写" }] }, { "type": "text", "name": "", "icon": "icon-wenzishezhi-", "options": { "defaultValue": "业务咨询或普通业务受影响，需要协助", "customClass": "", "remoteFunc": "func_1566655084720", "remoteOptions": [] }, "novalid": {}, "key": "1566655084720", "model": "text_1566655084720", "rules": [] }, { "type": "textarea", "name": "问题描述", "icon": "icon-diy-com-textarea", "options": { "width": "100%", "defaultValue": "", "required": true, "disabled": false, "pattern": "", "placeholder": "若提交密码或AccessKeys等信息，请通过'机密信息'方式添加，并在问题处理完毕后及时修改。", "customClass": "", "remoteFunc": "func_1566655144639", "remoteOptions": [] }, "novalid": {}, "key": "1566655300267", "model": "textarea1566655300267", "rules": [{ "required": true, "message": "问题描述必须填写" }] }, { "type": "input", "name": "实例ID", "icon": "icon-input", "options": { "width": "100%", "defaultValue": "", "required": true, "dataType": "string", "pattern": "", "placeholder": "", "customClass": "", "disabled": false, "remoteFunc": "func_1566655172900", "remoteOptions": [] }, "novalid": {}, "key": "1566655387939", "model": "input1566655387939", "rules": [{ "type": "string", "message": "实例ID格式不正确" }, { "required": true, "message": "实例ID必须填写" }] }, { "type": "input", "name": "网站地址", "icon": "icon-input", "options": { "width": "100%", "defaultValue": "", "required": true, "dataType": "url", "pattern": "", "placeholder": "", "customClass": "", "disabled": false, "remoteFunc": "func_1566655194297", "remoteOptions": [] }, "novalid": {}, "key": "1566655204468", "model": "input1566655204468", "rules": [{ "type": "url", "message": "网站地址格式不正确" }, { "required": true, "message": "网站地址必须填写" }] }, { "type": "input", "name": "WEB目录位置", "icon": "icon-input", "options": { "width": "100%", "defaultValue": "", "required": false, "dataType": "string", "pattern": "", "placeholder": "", "customClass": "", "disabled": false, "remoteFunc": "func_1566655194297", "remoteOptions": [] }, "novalid": {}, "key": "1566655194297", "model": "input_1566655194297", "rules": [{ "type": "string", "message": "WEB目录位置格式不正确" }] }, { "type": "radio", "name": "云盾提示", "icon": "icon-radio-active", "options": { "inline": true, "defaultValue": "", "showLabel": false, "options": [{ "value": "有提示攻击", "label": "选项3" }, { "value": "没有提示攻击", "label": "选项4" }], "required": true, "width": "", "remote": false, "remoteOptions": [], "props": { "value": "value", "label": "label" }, "remoteFunc": "func_15666549856100", "customClass": "" }, "novalid": {}, "key": "1566655226276", "model": "radio_1566654985699", "rules": [{ "required": true, "message": "云盾提示必须填写" }] }, { "type": "textarea", "name": "机密信息", "icon": "icon-diy-com-textarea", "options": { "width": "100%", "defaultValue": "", "required": false, "disabled": false, "pattern": "", "placeholder": "若提交密码或AccessKeys等信息，请通过'机密信息'方式添加，并在问题处理完毕后及时修改。", "customClass": "", "remoteFunc": "func_1566655144639", "remoteOptions": [] }, "novalid": {}, "key": "1566655149172", "model": "textarea_1566655144639", "rules": [] }, { "type": "input", "name": "手机号", "icon": "icon-input", "options": { "width": "100%", "defaultValue": "", "required": true, "dataType": "number", "pattern": "", "placeholder": "", "customClass": "", "disabled": false, "remoteFunc": "func_1566655172900", "remoteOptions": [] }, "novalid": {}, "key": "1566655392638", "model": "input1566655392638", "rules": [{ "type": "number", "message": "手机号格式不正确" }, { "required": true, "message": "手机号必须填写" }] }, { "type": "input", "name": "邮箱", "icon": "icon-input", "options": { "width": "100%", "defaultValue": "", "required": true, "dataType": "email", "pattern": "", "placeholder": "", "customClass": "", "disabled": false, "remoteFunc": "func_1566655172900", "remoteOptions": [] }, "novalid": {}, "key": "1566655172900", "model": "input_1566655172900", "rules": [{ "type": "email", "message": "邮箱格式不正确" }, { "required": true, "message": "邮箱必须填写" }] }, { "type": "fileupload", "name": "上传附件", "icon": "icon-wenjianshangchuan", "options": { "defaultValue": [], "width": "", "tip": "", "action": "", "customClass": "", "disabled": false, "limit": 9, "fileList": [], "remoteFunc": "func_1566655438790", "remoteOptions": [] }, "novalid": {}, "key": "1566655438790", "model": "fileupload_1566655438790", "rules": [] }] }], "options": {
+                            "gutter": 0, "justify": "start", "align": "top", "customClass": "el-container", "remoteFunc": "func_1566654970611"
+                        }, "key": "1566654970611", "model": "grid_1566654970611", "rules": []
+                    }], "config": { "labelWidth": 100, "labelPosition": "right", "size": "small", "customClass": "" }
+                },
+                editData: {},
+                remoteFuncs: {
+
+                }
+            },
+            methods: {
+                handleSubmit() {
+                    this.$refs.generateForm.getData().then(data => {
+                        // 数据校验成功
+                        // data 为获取的表单数据
+                    }).catch(e => {
+                        // 数据校验失败
+                    })
+                }
+            }
+        })</script>
+</body>
+</html>
