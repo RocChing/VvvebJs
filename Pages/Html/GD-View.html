@@ -1,0 +1,347 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title></title>
+    <link href="/css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-size: 12px;
+        }
+
+        .red {
+            color: red;
+        }
+
+        @media (min-width: 768px) {
+            .col-form-label {
+                text-align: right;
+            }
+        }
+
+        .text-title {
+            color: #999 !important;
+        }
+
+        .text-success {
+            color: #090 !important;
+        }
+
+        .user-icon {
+            position: relative;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            border: 2px #E7F2FA solid;
+            /*float: left;*/
+            border-radius: 60px;
+            overflow: hidden;
+        }
+
+            .user-icon img {
+                margin-top: -2px;
+                margin-left: -2px;
+            }
+
+        .message-item .item-content {
+            margin-top: 2px;
+            /*white-space: -moz-pre-wrap;
+            white-space: -o-pre-wrap;
+            white-space: pre-wrap;*/
+            word-wrap: break-word;
+        }
+
+        .text-size-14 {
+            font-size: 14px !important;
+        }
+
+        .text-explode {
+            font-weight: normal !important;
+            color: #999 !important;
+            margin: 0px 0px !important;
+        }
+
+        .message-item {
+            position: relative;
+            padding: 18px;
+            border-top: 1px dashed #bcbcbc;
+        }
+
+            .message-item:first-child {
+                border: none;
+            }
+
+            .message-item:last-child {
+                background: #eafbff;
+            }
+
+        .attach {
+            margin-left: 8px;
+            display: inline-block;
+        }
+
+            .attach .placeholder-image {
+                position: absolute;
+                left: 4px;
+                top: 3px;
+                height: 30px;
+                width: 30px;
+            }
+
+            .attach .current-border {
+                border: 2px solid white;
+            }
+
+                .attach .current-border:hover {
+                    border: 2px solid #09C
+                }
+
+        .attachImage {
+            position: relative;
+            height: 32px;
+            width: 32px;
+            border: 1px solid #09C;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        .attach .current .arrow-down {
+            margin: 0 auto;
+            width: 0px;
+            height: 0px;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #09C;
+            font-size: 0px;
+            line-height: 0px;
+        }
+
+        .preview {
+            margin-top: 20px;
+            padding: 10px;
+            padding-top: 2px;
+            max-height: 400px;
+            max-width: 600px;
+            border: 1px solid #ccc;
+            display: inline-block;
+            background: #fff;
+        }
+
+            .preview img.previewImage {
+                margin-top: 5px;
+                max-height: 320px;
+                max-width: 580px;
+            }
+
+            .preview .operations {
+                line-height: 20px;
+                height: 20px;
+            }
+
+                .preview .operations a {
+                    color: #666;
+                }
+
+        .margin-right, .margin-right-1 {
+            margin-right: 8px !important;
+        }
+
+        .mb10 {
+            margin-bottom: 10px;
+        }
+
+        .table-content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="card mb10">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <span class="text-title">问题标题: </span><span>容器镜像服务中我添加了一个仓储 cnooc_eerp， 但是总构建不成功， 请帮忙看一下原因；</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <span class="text-title">工单编号: </span><span>21A67UD</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <span class="text-title">提交账号: </span><span>******</span>
+                    </div>
+                    <div class="col-sm-3">
+                        <span class="text-title">提交时间: </span><span>2019-03-26 09:59:41</span>
+                    </div>
+                    <div class="col-sm-2">
+                        <span class="text-title">状态: </span><span class="text-success">待评价</span>
+                    </div>
+                    <div class="col-sm-2">
+                        <a>删除工单</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb10">
+            <div class="card-header">
+                <strong class="card-title">沟通记录</strong>
+            </div>
+            <div class="card-body">
+                <div class="clearfix table-content">
+                    <div class="row message-item">
+                        <div class="user-icon"><img width="40" height="40" src="https://g.alicdn.com/aliyun/usercenter/1.3.12/images/workorder/avatar.png"></div>
+
+                        <div class="item-content col-sm-10 text-title">
+                            <div class="ng-scope ng-binding">
+                                <span class="text-size-14 ng-scope"><span class="ng-binding">******</span> <span bo-bind="'semicolon' | translate">:</span></span> 容器镜像服务中我添加了一个仓储 cnooc_eerp， 但是总构建不成功， 请帮忙看一下原因；
+                            </div>
+                            <br />
+                            <div class="item-time text-explode ng-binding">2019-03-26 09:59:42</div>
+                        </div>
+                    </div>
+
+                    <div class="row message-item">
+                        <div class="user-icon"><img width="40" height="40" src="https://img.alicdn.com/tfs/TB10E_yd9_I8KJjy0FoXXaFnVXa-200-200.png"></div>
+                        <div class="item-content col-sm-10">
+                            <div class="ng-scope ng-binding">
+                                <span class="text-size-14 ng-scope"><span class="ng-binding">售后工程师</span> <span bo-bind="'semicolon' | translate">:</span></span>  您好，我们已经收到您提交的问题，正在为您查看，请稍等
+                            </div>
+                            <br />
+                            <div class="item-time text-explode ng-binding">2019-03-26 09:59:42</div>
+                        </div>
+                    </div>
+
+                    <div class="row message-item">
+                        <div class="user-icon"><img width="40" height="40" src="https://img.alicdn.com/tfs/TB10E_yd9_I8KJjy0FoXXaFnVXa-200-200.png"></div>
+                        <div class="item-content col-sm-10">
+                            <div class="ng-scope ng-binding">
+                                <span class="text-size-14 ng-scope"><span class="ng-binding">售后工程师</span> <span>:</span></span> 辛苦提供一下完整构建日志呢，这边先看下。多谢
+                            </div>
+                            <br />
+                            <div class="item-time text-explode ng-binding">2019-03-26 09:59:42</div>
+                        </div>
+                    </div>
+
+                    <div class="row message-item">
+                        <div class="user-icon"><img width="40" height="40" src="https://g.alicdn.com/aliyun/usercenter/1.3.12/images/workorder/avatar.png"></div>
+
+                        <div class="item-content col-sm-10 text-title">
+                            <div class="ng-scope ng-binding">
+                                <span class="text-size-14 ng-scope"><span class="ng-binding">******</span> <span>:</span></span> 请看构建日志
+                                <span>
+                                    <a class="attach" href="https://workorder.console.aliyun.com/attach/note_attach.do?spm=5176.2020520129.105.3.3ba546aeCgzirG&id=57773975&order=0">附件</a>
+                                </span>
+                            </div>
+                            <br />
+                            <div class="item-time text-explode ng-binding">2019-03-26 09:59:42</div>
+                        </div>
+                    </div>
+
+                    <div class="row message-item">
+                        <div class="user-icon"><img width="40" height="40" src="https://g.alicdn.com/aliyun/usercenter/1.3.12/images/workorder/avatar.png"></div>
+
+                        <div class="item-content col-sm-10 text-title">
+                            <div class="ng-scope ng-binding">
+                                <span class="text-size-14"><span class="ng-binding">******</span> <span>:</span></span>  你们的构建日志不能下载 ， 复制的
+                            </div>
+                            <br />
+                            <div class="item-time text-explode ng-binding">2019-03-26 09:59:42</div>
+                        </div>
+                    </div>
+
+                    <div class="row message-item">
+                        <div class="user-icon"><img width="40" height="40" src="https://img.alicdn.com/tfs/TB10E_yd9_I8KJjy0FoXXaFnVXa-200-200.png"></div>
+                        <div class="item-content col-sm-10">
+                            <div class="ng-scope ng-binding">
+                                <span class="text-size-14 ng-scope"><span class="ng-binding">售后工程师</span> <span>:</span></span>  辛苦根据构建日志排查一下，目前看下您运行的命令失败了。同时容器镜像服务是没有打包编译的功能的，请您知悉。多谢
+
+                                <div class="attach">
+                                    <div style="position:relative;">
+                                        <img class="placeholder-image" src="https://gtd.alicdn.com/tps/i2/TB15B7mGVXXXXbjapXXu_f_IXXX-66-64.png_110x110.jpg">
+                                        <div class="current-border">
+                                            <img class="attachImage" src="https://workorder.console.aliyun.com/attach/note_attach.do?id=57774481&amp;order=0" />
+                                        </div>
+                                        <div class="arrow-down"></div>
+                                    </div>
+                                </div>
+
+                                <div class="preview">
+                                    <div class="clearfix operations">
+                                        <span class="float-right">
+                                            <a class="margin-right" href="javascript:;"><span class="glyphicon glyphicon-eject"></span> <span>收起</span></a>
+                                            <a href="https://workorder.console.aliyun.com/attach/note_attach.do?spm=5176.2020520129.105.11.3ba546aeCgzirG&amp;id=57774481&amp;order=0" target="_blank"><span>大图</span></a>
+                                        </span>
+                                    </div>
+                                    <img class="previewImage" src="https://workorder.console.aliyun.com/attach/note_attach.do?id=57774481&amp;order=0" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="item-time text-explode ng-binding">2019-03-26 09:59:42</div>
+                        </div>
+                    </div>
+
+                    <div class="row message-item">
+                        <div class="user-icon"><img width="40" height="40" src="https://img.alicdn.com/tfs/TB10E_yd9_I8KJjy0FoXXaFnVXa-200-200.png"></div>
+                        <div class="item-content col-sm-10">
+                            <div class="ng-scope ng-binding">
+                                <span class="text-size-14 ng-scope"><span class="ng-binding">售后工程师</span> <span>:</span></span>  您好，由于您长时间未反馈信息给我们，我们暂时将您的问题修改为待您确认状态，您可以确认工单完成或者重新启动工单。如您不再回复，7天后工单会自动关闭。如果您在工单中提供了账号密码等敏感信息，请您及时修改，谢谢！
+                            </div>
+                            <br />
+                            <div class="item-time text-explode ng-binding">2019-03-26 09:59:42</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header"><strong class="card-title">待您评价 :</strong></div>
+            <div class="card-body">
+                <div class="clearfix table-content">
+                    <span class="text-title"><span class="text-danger">*</span> <span style="color:#666">整体评价</span> <span>:</span></span>
+                    <span class="ks-simplestar" style="margin-left:17px">
+                        <img src="https://img.alicdn.com/tfs/TB1xCSZQXXXXXXYXVXXXXXXXXXX-30-30.png" />
+                        <img src="https://img.alicdn.com/tfs/TB1.aW.QXXXXXbgXFXXXXXXXXXX-30-30.png" />
+                        <img src="https://img.alicdn.com/tfs/TB1.aW.QXXXXXbgXFXXXXXXXXXX-30-30.png" />
+                        <img src="https://img.alicdn.com/tfs/TB1.aW.QXXXXXbgXFXXXXXXXXXX-30-30.png" />
+                        <img src="https://img.alicdn.com/tfs/TB1lGyTQXXXXXXZXVXXXXXXXXXX-30-30.png" />
+                    </span>
+
+                    <div class="form-group row" style="margin-top:1rem;">
+                        <label class="col-sm-1 control-label" style="padding:6px;text-align: left"><span>问题是否解决:</span></label>
+                        <div class="col-sm-11" style="padding-left:0px; padding-top:6px;">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="inlineCheckbox1" value="option1" />
+                                <label class="form-check-label" for="inlineCheckbox1">已解决</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="inlineCheckbox2" value="option1" />
+                                <label class="form-check-label" for="inlineCheckbox2">未解决</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" style="margin-top:1rem;">
+                        <label class="col-sm-1 control-label" style="padding:6px;text-align: left"><span>我要反馈:</span></label>
+                        <div class="col-sm-11" style="padding-left:0px; padding-top:6px;">
+                            <textarea class="form-control" rows="5" placeholder="感谢您对我们的肯定，为了给您带来更好的服务体验，请告诉我们您最满意的点"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row" style="margin-top:1rem;">
+                        <label class="col-sm-1 control-label" style="padding:6px;text-align: left"><span></span></label>
+                        <div class="col-sm-11" style="padding-left:0px; padding-top:6px;">
+                            <button type="submit" class="btn btn-primary">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
